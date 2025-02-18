@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pothole Div Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        button {
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        textarea {
+            width: 80%;
+            height: 100px;
+            margin-top: 20px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Pothole Div Generator</h2>
+    <input type="text" id="imageLink" placeholder="Enter Image URL">
+    <input type="text" id="locationLink" placeholder="Enter Location URL">
+    <button onclick="generateDiv()">Generate Code</button>
+    <textarea id="output" readonly></textarea>
+
+    <script>
+        function generateDiv() {
+            let imageUrl = document.getElementById("imageLink").value;
+            let locationUrl = document.getElementById("locationLink").value;
+            
+            if(imageUrl && locationUrl) {
+                let code = `<div class="image-box">\n` +
+                           `    <img src="${imageUrl}" alt="Pothole Image">\n` +
+                           `    <a href="${locationUrl}" class="location-btn" target="_blank">View Location</a>\n` +
+                           `</div>`;
+                document.getElementById("output").value = code;
+            } else {
+                alert("Please enter both links!");
+            }
+        }
+    </script>
+</body>
+</html>
